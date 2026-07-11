@@ -1,0 +1,577 @@
+/* ============================================================
+   WANDER LOG — Travel Recommendation Web Application
+   Design system: "Passport" — deep harbor navy, sea teal,
+   parchment paper, and rotated stamp badges as the signature
+   recurring motif tying every page together.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+  --navy: #0E2A33;
+  --navy-deep: #081A20;
+  --parchment: #F6F1E4;
+  --parchment-dark: #EAE1CB;
+  --teal: #2E7D6B;
+  --teal-dark: #1F5A4C;
+  --clay: #C1440E;
+  --sand: #D9C79E;
+  --ink: #1A1A1A;
+  --paper-line: rgba(14, 42, 51, 0.15);
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Work Sans', -apple-system, sans-serif;
+  --font-mono: 'Space Mono', monospace;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--parchment);
+  line-height: 1.6;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Skip link / accessibility ---------- */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--clay);
+  color: #fff;
+  padding: 10px 16px;
+  z-index: 999;
+}
+.skip-link:focus {
+  left: 16px;
+  top: 16px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--clay);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   NAV BAR — styled like a boarding-pass strip
+   ============================================================ */
+.boarding-pass-nav {
+  background: var(--navy);
+  color: var(--parchment);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 3px dashed var(--sand);
+}
+
+.nav-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.5px;
+  color: var(--parchment);
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.brand .brand-code {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--sand);
+  border: 1px solid var(--sand);
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border-radius: 3px;
+  transition: background 0.2s ease, color 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  background: var(--teal);
+  color: #fff;
+}
+
+.nav-links a.active {
+  border: 1px solid var(--sand);
+  color: var(--sand);
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--sand);
+  color: var(--parchment);
+  font-family: var(--font-mono);
+  padding: 6px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  position: relative;
+  min-height: 78vh;
+  display: flex;
+  align-items: flex-end;
+  background: linear-gradient(180deg, rgba(8,26,32,0.15) 0%, rgba(8,26,32,0.85) 100%),
+              url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  color: var(--parchment);
+}
+
+.hero-content {
+  padding: 64px 24px 56px;
+  max-width: 1120px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.8rem;
+  color: var(--sand);
+  display: inline-block;
+  border-bottom: 1px dashed var(--sand);
+  padding-bottom: 4px;
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 4.4rem);
+  font-weight: 600;
+  margin: 0 0 18px;
+  max-width: 16ch;
+  line-height: 1.05;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  max-width: 56ch;
+  color: var(--parchment-dark);
+  margin: 0 0 28px;
+}
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  padding: 13px 26px;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--clay);
+  color: #fff;
+}
+.btn-primary:hover, .btn-primary:focus-visible { background: #a8390c; }
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--parchment);
+  color: var(--parchment);
+  margin-left: 10px;
+}
+.btn-outline:hover, .btn-outline:focus-visible { background: rgba(246,241,228,0.15); }
+
+/* ============================================================
+   SECTION HEADERS
+   ============================================================ */
+.section {
+  padding: 80px 0;
+  border-bottom: 1px solid var(--paper-line);
+}
+
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.section-eyebrow {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  color: var(--teal-dark);
+}
+
+.section-head h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  margin: 6px 0 0;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.section-intro {
+  max-width: 62ch;
+  color: #3c3c3c;
+}
+
+/* ============================================================
+   PASSPORT STAMP — signature element
+   ============================================================ */
+.stamp {
+  width: 108px;
+  height: 108px;
+  border: 3px double var(--clay);
+  border-radius: 50%;
+  color: var(--clay);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-shrink: 0;
+  transform: rotate(-8deg);
+  mix-blend-mode: multiply;
+  padding: 8px;
+  background: rgba(193,68,14,0.03);
+}
+
+.stamp span { display: block; }
+.stamp .stamp-big { font-size: 0.95rem; font-weight: 700; margin: 3px 0; }
+
+/* ============================================================
+   RECOMMENDATION CARDS
+   ============================================================ */
+.postcard {
+  background: #fff;
+  border: 1px solid var(--paper-line);
+  border-radius: 6px;
+  padding: 32px;
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 28px;
+  margin-bottom: 28px;
+  box-shadow: 0 1px 0 rgba(14,42,51,0.04);
+}
+
+.postcard-body h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  margin: 0 0 6px;
+  color: var(--navy);
+}
+
+.postcard-body .locale {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--teal-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.postcard-body p {
+  color: #333;
+  margin: 0 0 18px;
+  max-width: 68ch;
+}
+
+.image-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.image-pair figure {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 4px;
+  border: 1px solid var(--paper-line);
+}
+
+.image-pair img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.image-pair figure:hover img { transform: scale(1.05); }
+
+.image-pair figcaption {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 8px 10px;
+  background: var(--navy);
+  color: var(--sand);
+}
+
+/* ============================================================
+   ABOUT PAGE
+   ============================================================ */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.about-photo {
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--paper-line);
+}
+.about-photo img { width: 100%; height: 340px; object-fit: cover; }
+
+.value-list {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0;
+  display: grid;
+  gap: 18px;
+}
+
+.value-list li {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 14px;
+  align-items: start;
+}
+
+.value-index {
+  font-family: var(--font-mono);
+  color: var(--clay);
+  font-weight: 700;
+}
+
+.value-list h4 {
+  margin: 0 0 4px;
+  font-family: var(--font-display);
+  color: var(--navy);
+}
+.value-list p { margin: 0; color: #333; }
+
+.team-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 36px;
+}
+
+.team-card {
+  text-align: center;
+}
+.team-card .avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 12px;
+  border: 3px solid var(--sand);
+}
+.team-card h5 { margin: 0; font-family: var(--font-display); color: var(--navy); }
+.team-card span {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--teal-dark);
+}
+
+.stat-strip {
+  display: flex;
+  gap: 36px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+.stat-strip div { text-align: left; }
+.stat-strip strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--clay);
+}
+.stat-strip span {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+
+/* ============================================================
+   CONTACT PAGE
+   ============================================================ */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 48px;
+}
+
+.contact-info h3 {
+  font-family: var(--font-display);
+  color: var(--navy);
+  margin-top: 0;
+}
+
+.contact-detail {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+.contact-detail strong { color: var(--teal-dark); }
+
+.contact-form {
+  background: #fff;
+  border: 1px solid var(--paper-line);
+  border-radius: 6px;
+  padding: 32px;
+}
+
+.form-row { margin-bottom: 20px; }
+
+.form-row label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 6px;
+  color: var(--navy);
+}
+
+.form-row input,
+.form-row textarea,
+.form-row select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--paper-line);
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  background: var(--parchment);
+  color: var(--ink);
+}
+
+.form-row input:focus,
+.form-row textarea:focus,
+.form-row select:focus {
+  outline: none;
+  border-color: var(--teal);
+  background: #fff;
+}
+
+.form-row textarea { resize: vertical; min-height: 120px; }
+
+.form-note {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #666;
+  margin-top: -8px;
+  margin-bottom: 20px;
+}
+
+#form-status {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 10px 12px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  display: none;
+}
+#form-status.show { display: block; }
+#form-status.success { background: rgba(46,125,107,0.12); color: var(--teal-dark); }
+#form-status.error { background: rgba(193,68,14,0.1); color: var(--clay); }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  background: var(--navy-deep);
+  color: var(--parchment-dark);
+  padding: 40px 0;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+footer .container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+footer a:hover { color: var(--sand); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 780px) {
+  .postcard { grid-template-columns: 1fr; }
+  .stamp { transform: rotate(-4deg); margin-bottom: 8px; }
+  .about-grid, .contact-grid { grid-template-columns: 1fr; }
+  .team-strip { grid-template-columns: 1fr 1fr; }
+  .image-pair { grid-template-columns: 1fr; }
+
+  .nav-toggle { display: inline-block; }
+  .nav-links {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    padding-top: 10px;
+  }
+  .nav-links.open { display: flex; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
