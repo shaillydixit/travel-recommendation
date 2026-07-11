@@ -23,10 +23,17 @@
       <li><a href="about.html">About Us</a></li>
       <li><a href="contact.html">Contact Us</a></li>
     </ul>
+    <form class="nav-search" id="navSearch" role="search">
+      <label for="searchInput" class="sr-only">Search destinations</label>
+      <input type="search" id="searchInput" name="q" placeholder="Search destinations (e.g. Japan, Temple)">
+      <button type="submit" id="searchBtn" class="btn-nav-search">Search</button>
+      <button type="button" id="clearBtn" class="btn-nav-clear">Clear</button>
+    </form>
   </div>
 </nav>
 
 <main id="main">
+  <p id="searchNoResults" class="search-status" hidden>No destinations match your search. Try "beach", "temple", "Japan", or press Clear.</p>
   <!-- ============ HERO / INTRODUCTION ============ -->
   <header class="hero">
     <div class="hero-content">
@@ -52,7 +59,7 @@
         limestone cliffs that rise straight out of the Andaman Sea.</p>
       </div>
 
-      <div class="postcard">
+      <div class="postcard" data-keywords="beach railay thailand krabi andaman escape">
         <div class="stamp">
           <span>Est.</span>
           <span class="stamp-big">Beach</span>
@@ -76,6 +83,31 @@
           </div>
         </div>
       </div>
+
+      <div class="postcard" data-keywords="beach tulum mexico caribbean riviera maya">
+        <div class="stamp">
+          <span>Est.</span>
+          <span class="stamp-big">Beach</span>
+          <span>Escape</span>
+        </div>
+        <div class="postcard-body">
+          <span class="locale">Quintana Roo · Mexico</span>
+          <h3>Tulum Beach</h3>
+          <p>White sand backed by Mayan ruins on one side and a strip of palm-shaded beach clubs on
+          the other. Rent a bike to reach the quieter stretches south of town, and save an afternoon
+          for the cenotes just inland for a freshwater break from the sun.</p>
+          <div class="image-pair">
+            <figure>
+              <img src="https://images.unsplash.com/photo-1552074284-5e88ef1aef18?auto=format&fit=crop&w=800&q=80" alt="Tulum beach with turquoise Caribbean water and palm trees" loading="lazy">
+              <figcaption>Tulum's Caribbean shoreline</figcaption>
+            </figure>
+            <figure>
+              <img src="https://images.unsplash.com/photo-1512813195386-6cf811ad3542?auto=format&fit=crop&w=800&q=80" alt="Mayan ruins overlooking the beach at Tulum" loading="lazy">
+              <figcaption>Ruins overlooking the beach</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -91,7 +123,7 @@
         you can spend anywhere in Southeast Asia if you arrive before the gates open.</p>
       </div>
 
-      <div class="postcard">
+      <div class="postcard" data-keywords="temple angkor wat cambodia siem reap sacred">
         <div class="stamp">
           <span>Sacred</span>
           <span class="stamp-big">Temple</span>
@@ -130,7 +162,7 @@
         into a rail network this fast and this easy to navigate on a single trip.</p>
       </div>
 
-      <div class="postcard">
+      <div class="postcard" data-keywords="japan country tokyo kyoto fuji asia">
         <div class="stamp">
           <span>Full</span>
           <span class="stamp-big">Country</span>

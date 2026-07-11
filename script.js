@@ -13,6 +13,50 @@ if (navToggle && navLinks) {
   });
 }
 
+// Destination search (Search / Clear) — filters the recommendation
+// postcards on the Home page by keyword.
+const navSearch = document.getElementById('navSearch');
+const searchInput = document.getElementById('searchInput');
+const clearBtn = document.getElementById('clearBtn');
+const postcards = document.querySelectorAll('.postcard[data-keywords]');
+const noResultsMsg = document.getElementById('searchNoResults');
+
+if (navSearch && postcards.length) {
+  const runSearch = () => {
+    const term = searchInput.value.trim().toLowerCase();
+    let matches = 0;
+
+    postcards.forEach((card) => {
+      const keywords = card.getAttribute('data-keywords').toLowerCase();
+      const isMatch = term === '' || keywords.includes(term);
+      card.classList.toggle('is-hidden', !isMatch);
+      if (isMatch) matches += 1;
+    });
+
+    if (noResultsMsg) {
+      noResultsMsg.hidden = !(term !== '' && matches === 0);
+    }
+
+    if (term !== '' && matches > 0) {
+      const firstMatch = document.querySelector('.postcard[data-keywords]:not(.is-hidden)');
+      if (firstMatch) firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  };
+
+  navSearch.addEventListener('submit', (event) => {
+    event.preventDefault();
+    runSearch();
+  });
+
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      postcards.forEach((card) => card.classList.remove('is-hidden'));
+      if (noResultsMsg) noResultsMsg.hidden = true;
+    });
+  }
+}
+
 // Contact form validation + submission feedback
 const contactForm = document.getElementById('contactForm');
 
